@@ -1,0 +1,768 @@
+type TeacherStudioAffiliation = 
+ record {
+   studioName: text;
+   studioUserName: text;
+   teacherUserName: text;
+ };
+type TeacherStudent = 
+ record {
+   studentUserName: text;
+   teacherUserName: text;
+ };
+type TeacherSchedule = 
+ record {
+   dayOfWeek: text;
+   duration: nat;
+   endTime: text;
+   lessonDate: text;
+   notes: text;
+   scheduleId: text;
+   startTime: text;
+   status: text;
+   studentUsername: text;
+   teacherUsername: text;
+ };
+type TeacherRecital = 
+ record {
+   date: text;
+   notes: text;
+   recitalId: text;
+   recitalName: text;
+   studentAssignments: text;
+   teacherUsername: text;
+   venue: text;
+ };
+type TeacherExamplePerformance = 
+ record {
+   attachedToAssignmentId: text;
+   commentary: text;
+   description: text;
+   mediaUrl: text;
+   notes: text;
+   performanceId: text;
+   teacherUsername: text;
+   title: text;
+ };
+type TeacherDetail = 
+ record {
+   bio: text;
+   certifications: text;
+   instruments: text;
+   notes: text;
+   yearsExperience: text;
+ };
+type StudioDetail = 
+ record {
+   description: text;
+   licenseNumber: text;
+   notes: text;
+   website: text;
+ };
+type StudentRepertoire = 
+ record {
+   composer: text;
+   genre: text;
+   notes: text;
+   performanceDate: text;
+   repertoireId: text;
+   startDate: text;
+   status: text;
+   studentUsername: text;
+   teacherUsername: text;
+   title: text;
+ };
+type StudentProgress = 
+ record {
+   date: text;
+   goalMet: bool;
+   goalSet: text;
+   notes: text;
+   progressId: text;
+   score: nat;
+   skillCategory: text;
+   studentUsername: text;
+   teacherUsername: text;
+ };
+type StudentPractice = 
+ record {
+   duration: nat;
+   pieceWorkedOn: text;
+   practiceDate: text;
+   practiceId: text;
+   rating: nat;
+   studentNotes: text;
+   studentUsername: text;
+   teacherFeedback: text;
+   teacherUsername: text;
+ };
+type StudentMessage = 
+ record {
+   body: text;
+   fromUsername: text;
+   isPinned: bool;
+   isRead: bool;
+   messageId: text;
+   studentUsername: text;
+   subject: text;
+   teacherUsername: text;
+   timestamp: text;
+   toUsername: text;
+ };
+type StudentLesson = 
+ record {
+   duration: nat;
+   homeworkAssigned: text;
+   lessonDate: text;
+   lessonEntryId: text;
+   studentUsername: text;
+   teacherNotes: text;
+   teacherUsername: text;
+   topics: text;
+ };
+type StudentEnrollment = 
+ record {
+   enrollmentId: text;
+   ensembleParticipation: text;
+   instrument: text;
+   notes: text;
+   practiceGoals: text;
+   skillLevel: text;
+   studentUserName: text;
+   studioName: text;
+   teacherUserName: text;
+   theoryLevel: text;
+   voiceType: text;
+ };
+type StudentDetail = record {notes: text;};
+type StudentCollaboration = 
+ record {
+   collaborationId: text;
+   groupName: text;
+   groupType: text;
+   members: text;
+   rehearsalDates: text;
+   sharedRepertoire: text;
+   studentUsername: text;
+   teacherUsername: text;
+ };
+type StudentBilling = 
+ record {
+   amountPaid: float64;
+   billingId: text;
+   billingMonth: text;
+   notes: text;
+   paymentDate: text;
+   status: text;
+   studentUsername: text;
+   teacherUsername: text;
+   tuitionAmount: float64;
+ };
+type StudentAssignment = 
+ record {
+   assignmentId: text;
+   attachedExampleUrl: text;
+   description: text;
+   dueDate: text;
+   priority: text;
+   status: text;
+   studentUsername: text;
+   teacherFeedback: text;
+   teacherUsername: text;
+   title: text;
+ };
+type Role = 
+ variant {
+   Admin;
+   Parent;
+   Student;
+   Studio;
+   Teacher;
+   Unassigned;
+ };
+type RestoreResult = 
+ variant {
+   err: text;
+   ok;
+ };
+type ProfileUpdate = 
+ record {
+   address1: opt text;
+   address2: opt text;
+   city: opt text;
+   comments: opt text;
+   description: opt text;
+   email: opt text;
+   fullName: opt text;
+   parentAffiliation: opt text;
+   password: opt text;
+   phone: opt text;
+   role: opt Role;
+   state: opt text;
+   studentAffiliations: opt vec text;
+   studioAffiliation: opt text;
+   teacherAffiliation: opt text;
+   zip: opt text;
+ };
+type Profile = 
+ record {
+   address1: text;
+   address2: text;
+   city: text;
+   comments: text;
+   description: text;
+   email: text;
+   fullName: text;
+   parentAffiliation: text;
+   password: text;
+   phone: text;
+   role: Role;
+   state: text;
+   studentAffiliations: vec text;
+   studioAffiliation: text;
+   teacherAffiliation: text;
+   username: text;
+   zip: text;
+ };
+type ParentStudent = 
+ record {
+   parentUserName: text;
+   studentUserName: text;
+ };
+type MasterInstrument = 
+ record {
+   name: text;
+   sortOrder: nat;
+ };
+type Lesson = 
+ record {
+   date: text;
+   duration: text;
+   instrument: text;
+   lessonId: text;
+   notes: text;
+   status: text;
+   studentUsername: text;
+   studioUsername: text;
+   teacherUsername: text;
+ };
+type FullDump = 
+ record {
+   lessons: vec record {
+                  text;
+                  Lesson;
+                };
+   masterInstruments: vec record {
+                            text;
+                            MasterInstrument;
+                          };
+   parentStudents: vec record {
+                         text;
+                         ParentStudent;
+                       };
+   profiles: vec record {
+                   text;
+                   Profile;
+                 };
+   studentAssignments: vec record {
+                             text;
+                             StudentAssignment;
+                           };
+   studentBilling: vec record {
+                         text;
+                         StudentBilling;
+                       };
+   studentCollaboration: vec record {
+                               text;
+                               StudentCollaboration;
+                             };
+   studentDetails: vec record {
+                         text;
+                         StudentDetail;
+                       };
+   studentEnrollments: vec record {
+                             text;
+                             StudentEnrollment;
+                           };
+   studentLessons: vec record {
+                         text;
+                         StudentLesson;
+                       };
+   studentMessages: vec record {
+                          text;
+                          StudentMessage;
+                        };
+   studentPractices: vec record {
+                           text;
+                           StudentPractice;
+                         };
+   studentProgress: vec record {
+                          text;
+                          StudentProgress;
+                        };
+   studentRepertoire: vec record {
+                            text;
+                            StudentRepertoire;
+                          };
+   studioDetails: vec record {
+                        text;
+                        StudioDetail;
+                      };
+   teacherDetails: vec record {
+                         text;
+                         TeacherDetail;
+                       };
+   teacherExamplePerformances: vec record {
+                                     text;
+                                     TeacherExamplePerformance;
+                                   };
+   teacherRecitals: vec record {
+                          text;
+                          TeacherRecital;
+                        };
+   teacherSchedule: vec record {
+                          text;
+                          TeacherSchedule;
+                        };
+   teacherStudents: vec record {
+                          text;
+                          TeacherStudent;
+                        };
+   teacherStudioAffiliations: vec record {
+                                    text;
+                                    TeacherStudioAffiliation;
+                                  };
+ };
+type DumpResult = 
+ variant {
+   err: text;
+   ok: FullDump;
+ };
+service : {
+  addAssignmentStatus: (name: text, sortOrder: nat) -> (bool);
+  addBillingStatus: (name: text, sortOrder: nat) -> (bool);
+  addCertification: (name: text, sortOrder: nat) -> (bool);
+  addEnsembleType: (name: text, sortOrder: nat) -> (bool);
+  addFactRole: (name: text, sortOrder: nat) -> (bool);
+  addFactState: (name: text, sortOrder: nat) -> (bool);
+  addGenre: (name: text, sortOrder: nat) -> (bool);
+  addGroupType: (name: text, sortOrder: nat) -> (bool);
+  addInstrument: (name: text, sortOrder: nat) -> (bool);
+  addParentStudent: (parentUserName: text, studentUserName: text) -> (bool);
+  addParentStudentLink: (teacherUserName: text, parentUserName: text,
+   studentUserName: text) -> (variant {
+                                err: text;
+                                ok;
+                              });
+  addPriority: (name: text, sortOrder: nat) -> (bool);
+  addRepertoireStatus: (name: text, sortOrder: nat) -> (bool);
+  addSkillCategory: (name: text, sortOrder: nat) -> (bool);
+  addSkillLevel: (name: text, sortOrder: nat) -> (bool);
+  addTeacherStudioAffiliation: (teacherUserName: text, studioUserName:
+   text) -> (variant {
+               err: text;
+               ok;
+             });
+  addTheoryLevel: (name: text, sortOrder: nat) -> (bool);
+  addVoiceType: (name: text, sortOrder: nat) -> (bool);
+  clearParentStudents: () -> ();
+  clearProfiles: () -> ();
+  clearStudentAssignments: () -> ();
+  clearStudentBilling: () -> ();
+  clearStudentCollaboration: () -> ();
+  clearStudentDetails: () -> ();
+  clearStudentEnrollments: () -> ();
+  clearStudentLessons: () -> ();
+  clearStudentMessages: () -> ();
+  clearStudentPractices: () -> ();
+  clearStudentProgress: () -> ();
+  clearStudentRepertoire: () -> ();
+  clearStudioDetails: () -> ();
+  clearTeacherDetails: () -> ();
+  clearTeacherExamplePerformances: () -> ();
+  clearTeacherRecitals: () -> ();
+  clearTeacherSchedule: () -> ();
+  clearTeacherStudents: () -> ();
+  clearTeacherStudioAffiliations: () -> ();
+  createProfile: (profile: Profile) -> (variant {
+                                          err: text;
+                                          ok;
+                                        });
+  deleteAssignmentStatus: (name: text) -> (bool);
+  deleteBillingStatus: (name: text) -> (bool);
+  deleteCertification: (name: text) -> (bool);
+  deleteEnsembleType: (name: text) -> (bool);
+  deleteFactRole: (name: text) -> (bool);
+  deleteFactState: (name: text) -> (bool);
+  deleteGenre: (name: text) -> (bool);
+  deleteGroupType: (name: text) -> (bool);
+  deleteInstrument: (name: text) -> (bool);
+  deleteLesson: (lessonId: text) -> (bool);
+  deletePriority: (name: text) -> (bool);
+  deleteProfile: (username: text) -> (variant {
+                                        err: text;
+                                        ok;
+                                      });
+  deleteRepertoireStatus: (name: text) -> (bool);
+  deleteSkillCategory: (name: text) -> (bool);
+  deleteSkillLevel: (name: text) -> (bool);
+  deleteStudentAssignment: (assignmentId: text) -> (bool);
+  deleteStudentBilling: (billingId: text) -> (bool);
+  deleteStudentCollaboration: (collaborationId: text) -> (bool);
+  deleteStudentEnrollment: (enrollmentId: text) -> (bool);
+  deleteStudentLesson: (lessonEntryId: text) -> (bool);
+  deleteStudentMessage: (messageId: text) -> (bool);
+  deleteStudentPractice: (practiceId: text) -> (bool);
+  deleteStudentProgress: (progressId: text) -> (bool);
+  deleteStudentRepertoire: (repertoireId: text) -> (bool);
+  deleteTeacherExamplePerformance: (performanceId: text) -> (bool);
+  deleteTeacherRecital: (recitalId: text) -> (bool);
+  deleteTeacherSchedule: (scheduleId: text) -> (bool);
+  deleteTheoryLevel: (name: text) -> (bool);
+  deleteVoiceType: (name: text) -> (bool);
+  fullDump: () -> (DumpResult) query;
+  fullRestore: (dump: FullDump, adminUsername: text, password: text) ->
+   (RestoreResult);
+  getAllEnrollments: () -> (vec StudentEnrollment) query;
+  getAllLessons: () -> (vec record {
+                              text;
+                              Lesson;
+                            }) query;
+  getAllParentStudents: () -> (vec ParentStudent) query;
+  getAllProfiles: () -> (vec record {
+                               text;
+                               Profile;
+                             }) query;
+  getAllStudentAssignments: () ->
+   (vec record {
+          text;
+          StudentAssignment;
+        }) query;
+  getAllStudentBillings: () -> (vec record {
+                                      text;
+                                      StudentBilling;
+                                    }) query;
+  getAllStudentCollaborations: () ->
+   (vec record {
+          text;
+          StudentCollaboration;
+        }) query;
+  getAllStudentDetails: () -> (vec record {
+                                     text;
+                                     StudentDetail;
+                                   }) query;
+  getAllStudentLessons: () -> (vec record {
+                                     text;
+                                     StudentLesson;
+                                   }) query;
+  getAllStudentMessages: () -> (vec record {
+                                      text;
+                                      StudentMessage;
+                                    }) query;
+  getAllStudentPractices: () -> (vec record {
+                                       text;
+                                       StudentPractice;
+                                     }) query;
+  getAllStudentProgress: () -> (vec record {
+                                      text;
+                                      StudentProgress;
+                                    }) query;
+  getAllStudentRepertoire: () -> (vec record {
+                                        text;
+                                        StudentRepertoire;
+                                      }) query;
+  getAllStudioDetails: () -> (vec record {
+                                    text;
+                                    StudioDetail;
+                                  }) query;
+  getAllTeacherDetails: () -> (vec record {
+                                     text;
+                                     TeacherDetail;
+                                   }) query;
+  getAllTeacherExamplePerformances: () ->
+   (vec record {
+          text;
+          TeacherExamplePerformance;
+        }) query;
+  getAllTeacherRecitals: () -> (vec record {
+                                      text;
+                                      TeacherRecital;
+                                    }) query;
+  getAllTeacherSchedules: () -> (vec record {
+                                       text;
+                                       TeacherSchedule;
+                                     }) query;
+  getAllTeacherStudioAffiliations: () -> (vec TeacherStudioAffiliation) query;
+  getAssignmentStatuses: () -> (vec text) query;
+  getAssignmentsByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentAssignment;
+        }) query;
+  getBillingStatuses: () -> (vec text) query;
+  getBillingsByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentBilling;
+        }) query;
+  getCertifications: () -> (vec text) query;
+  getCollaborationsByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentCollaboration;
+        }) query;
+  getEnrollmentsByStudent: (studentUserName: text) ->
+   (vec StudentEnrollment) query;
+  getEnrollmentsByTeacher: (teacherUserName: text) ->
+   (vec StudentEnrollment) query;
+  getEnsembleTypes: () -> (vec text) query;
+  getFactRoles: () -> (vec text) query;
+  getFactStates: () -> (vec text) query;
+  getGenres: () -> (vec text) query;
+  getGroupTypes: () -> (vec text) query;
+  getInstruments: () -> (vec text) query;
+  getLesson: (lessonId: text) -> (opt Lesson) query;
+  getLessonEntriesByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentLesson;
+        }) query;
+  getLessonsByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          Lesson;
+        }) query;
+  getLessonsByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          Lesson;
+        }) query;
+  getMessagesByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentMessage;
+        }) query;
+  getParentStudents: (parentUserName: text) -> (vec ParentStudent) query;
+  getParentUsernames: () -> (vec text) query;
+  getPerformancesByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          TeacherExamplePerformance;
+        }) query;
+  getPracticesByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentPractice;
+        }) query;
+  getPriorities: () -> (vec text) query;
+  getProgressByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentProgress;
+        }) query;
+  getRecitalsByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          TeacherRecital;
+        }) query;
+  getRepertoireByStudent: (studentUsername: text) ->
+   (vec record {
+          text;
+          StudentRepertoire;
+        }) query;
+  getRepertoireStatuses: () -> (vec text) query;
+  getSchedulesByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          TeacherSchedule;
+        }) query;
+  getSkillCategories: () -> (vec text) query;
+  getSkillLevels: () -> (vec text) query;
+  getStudentAssignment: (assignmentId: text) -> (opt StudentAssignment) query;
+  getStudentAssignmentsByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentAssignment;
+        }) query;
+  getStudentBillingRecord: (billingId: text) -> (opt StudentBilling) query;
+  getStudentBillingsByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentBilling;
+        }) query;
+  getStudentCollaboration: (collaborationId: text) ->
+   (opt StudentCollaboration) query;
+  getStudentCollaborationsByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentCollaboration;
+        }) query;
+  getStudentDetail: (username: text) -> (opt StudentDetail) query;
+  getStudentEnrollment: (enrollmentId: text) -> (opt StudentEnrollment) query;
+  getStudentLesson: (lessonEntryId: text) -> (opt StudentLesson) query;
+  getStudentLessonsByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentLesson;
+        }) query;
+  getStudentMessage: (messageId: text) -> (opt StudentMessage) query;
+  getStudentMessagesByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentMessage;
+        }) query;
+  getStudentParents: (studentUserName: text) -> (vec ParentStudent) query;
+  getStudentPractice: (practiceId: text) -> (opt StudentPractice) query;
+  getStudentPracticesByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentPractice;
+        }) query;
+  getStudentProgressByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentProgress;
+        }) query;
+  getStudentProgressRecord: (progressId: text) -> (opt StudentProgress) query;
+  getStudentRepertoireByTeacher: (teacherUsername: text) ->
+   (vec record {
+          text;
+          StudentRepertoire;
+        }) query;
+  getStudentRepertoireRecord: (repertoireId: text) ->
+   (opt StudentRepertoire) query;
+  getStudentTeachers: (studentUserName: text) -> (vec text) query;
+  getStudioDetail: (username: text) -> (opt StudioDetail) query;
+  getStudioTeacherAffiliations: (studioUserName: text) ->
+   (vec TeacherStudioAffiliation) query;
+  getStudioUsernames: () -> (vec text) query;
+  getTeacherAnalytics: (teacherUsername: text) ->
+   (record {
+      studentCount: nat;
+      studentsByInstrument: vec record {
+                                  text;
+                                  nat;
+                                };
+      studentsBySkillLevel: vec record {
+                                  text;
+                                  nat;
+                                };
+    }) query;
+  getTeacherDetail: (username: text) -> (opt TeacherDetail) query;
+  getTeacherExamplePerformance: (performanceId: text) ->
+   (opt TeacherExamplePerformance) query;
+  getTeacherRecital: (recitalId: text) -> (opt TeacherRecital) query;
+  getTeacherSchedule: (scheduleId: text) -> (opt TeacherSchedule) query;
+  getTeacherStudents: (teacherUserName: text) -> (vec text) query;
+  getTeacherStudioAffiliations: (teacherUserName: text) ->
+   (vec TeacherStudioAffiliation) query;
+  getTeacherUsernames: () -> (vec text) query;
+  getTheoryLevels: () -> (vec text) query;
+  getVoiceTypes: () -> (vec text) query;
+  onboardStudent: (createProfile: bool, profile: Profile, enrollment:
+   StudentEnrollment) -> (variant {
+                            err: text;
+                            ok: text;
+                          });
+  onboardStudentWithParent: (createStudentProfile: bool, studentProfile:
+   Profile, enrollment: StudentEnrollment, createParentProfile: bool,
+   parentProfile: opt Profile, linkParent: bool, parentUserName: opt text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  ping: () -> (text) query;
+  removeParentStudent: (parentUserName: text, studentUserName: text) ->
+   (bool);
+  removeParentStudentLink: (teacherUserName: text, parentUserName: text,
+   studentUserName: text) -> (variant {
+                                err: text;
+                                ok;
+                              });
+  removeTeacherStudioAffiliation: (teacherUserName: text, studioUserName:
+   text) -> (variant {
+               err: text;
+               ok;
+             });
+  saveLesson: (lessonId: text, "record": Lesson) -> ();
+  saveStudentAssignment: (assignmentId: text, "record": StudentAssignment) ->
+   ();
+  saveStudentBilling: (billingId: text, "record": StudentBilling) -> ();
+  saveStudentCollaboration: (collaborationId: text, "record":
+   StudentCollaboration) -> ();
+  saveStudentDetail: (username: text, detail: StudentDetail) -> ();
+  saveStudentEnrollment: (enrollmentId: text, "record": StudentEnrollment) ->
+   ();
+  saveStudentLesson: (lessonEntryId: text, "record": StudentLesson) -> ();
+  saveStudentMessage: (messageId: text, "record": StudentMessage) -> ();
+  saveStudentPractice: (practiceId: text, "record": StudentPractice) -> ();
+  saveStudentProgress: (progressId: text, "record": StudentProgress) -> ();
+  saveStudentRepertoire: (repertoireId: text, "record": StudentRepertoire) ->
+   ();
+  saveStudioDetail: (username: text, detail: StudioDetail) -> ();
+  saveTeacherDetail: (username: text, detail: TeacherDetail) -> ();
+  saveTeacherExamplePerformance: (performanceId: text, "record":
+   TeacherExamplePerformance) -> ();
+  saveTeacherRecital: (recitalId: text, "record": TeacherRecital) -> ();
+  saveTeacherSchedule: (scheduleId: text, "record": TeacherSchedule) -> ();
+  searchStudents: (searchQuery: text) -> (vec Profile) query;
+  signIn: (username: text, password: text) ->
+   (variant {
+      err: text;
+      ok: Profile;
+    });
+  signUp: (username: text, password: text, fullName: text, role: Role) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  teacherDump: (teacherUsername: text, password: text) -> (DumpResult) query;
+  teacherRestore: (dump: FullDump, teacherUsername: text, password: text) ->
+   (RestoreResult);
+  updateAssignmentStatus: (oldName: text, newName: text, sortOrder: nat) ->
+   (bool);
+  updateBillingStatus: (oldName: text, newName: text, sortOrder: nat) ->
+   (bool);
+  updateCertification: (oldName: text, newName: text, sortOrder: nat) ->
+   (bool);
+  updateEnsembleType: (oldName: text, newName: text, sortOrder: nat) ->
+   (bool);
+  updateFactRole: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateFactState: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateGenre: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateGroupType: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateInstrument: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateParentProfile: (teacherUserName: text, parentUserName: text,
+   profileUpdate: ProfileUpdate) -> (variant {
+                                       err: text;
+                                       ok;
+                                     });
+  updatePriority: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateProfile: (username: text, update: ProfileUpdate) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  updateRepertoireStatus: (oldName: text, newName: text, sortOrder: nat) ->
+   (bool);
+  updateSkillCategory: (oldName: text, newName: text, sortOrder: nat) ->
+   (bool);
+  updateSkillLevel: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateStudentEnrollment: (enrollmentId: text, teacherUserName: text,
+   update: StudentEnrollment) -> (variant {
+                                    err: text;
+                                    ok;
+                                  });
+  updateStudentProfile: (teacherUserName: text, studentUserName: text,
+   profileUpdate: ProfileUpdate, detailUpdate: StudentDetail) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  updateTeacherProfile: (teacherUserName: text, profileUpdate: ProfileUpdate,
+   detailUpdate: TeacherDetail) -> (variant {
+                                      err: text;
+                                      ok;
+                                    });
+  updateTheoryLevel: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+  updateVoiceType: (oldName: text, newName: text, sortOrder: nat) -> (bool);
+}

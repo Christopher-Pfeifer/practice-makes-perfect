@@ -1,0 +1,25 @@
+{
+  "overview": "Practice Makes Perfect is a role-based music studio management platform for Studios, Teachers, Students, and Parents, supporting multi-studio teacher affiliations and per-enrollment studio assignments.",
+  "features": [
+    "Multi-studio teacher affiliations — a teacher can be linked to multiple studios simultaneously",
+    "Per-enrollment studio assignment — each student enrollment is tied to a specific studio or marked Independent",
+    "Studio-scoped student visibility — studios only see students affiliated with them through teacher enrollments",
+    "Teacher onboarding flow — teachers create student profiles and enrollments directly from their dashboard",
+    "Role-based dashboards for Studio, Teacher, Student, and Parent",
+    "FACT table management for all lookup fields (instruments, skill levels, voice types, states, etc.)",
+    "Admin Portal with full backup/export and restore",
+    "Data Analytics portal with system-wide filtering",
+    "CSV import/export for all data tables"
+  ],
+  "category": "studio-management",
+  "tags": [
+    "music",
+    "studio",
+    "education",
+    "management",
+    "multi-role",
+    "teacher",
+    "student"
+  ],
+  "last_updated": "2026-06-04T04:07:50.765Z"
+}

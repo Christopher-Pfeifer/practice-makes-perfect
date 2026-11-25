@@ -1,0 +1,446 @@
+// Version: 3.0.0
+type Data__80296667<K, V> =
+  {var count : Nat__1040412405; kvs : [var ?(K, V)]};
+type FactAssignmentStatus__509279533 = {name : Text; sortOrder : Nat};
+type FactBillingStatus__388053895 = {name : Text; sortOrder : Nat};
+type FactCertification__765712365 = {name : Text; sortOrder : Nat};
+type FactEnsembleType__873551439 = {name : Text; sortOrder : Nat};
+type FactGenre__866651495 = {name : Text; sortOrder : Nat};
+type FactGroupType__224589511 = {name : Text; sortOrder : Nat};
+type FactPriority__145861265 = {name : Text; sortOrder : Nat};
+type FactRepertoireStatus__353268030 = {name : Text; sortOrder : Nat};
+type FactRole__766902976 = {name : Text; sortOrder : Nat};
+type FactSkillCategory__372111132 = {name : Text; sortOrder : Nat};
+type FactSkillLevel__961613954 = {name : Text; sortOrder : Nat};
+type FactState__735628440 = {name : Text; sortOrder : Nat};
+type FactTheoryLevel__164972576 = {name : Text; sortOrder : Nat};
+type FactVoiceType__780563565 = {name : Text; sortOrder : Nat};
+type Internal__41346355<K, V> =
+  {children : [var ?Node__1000929467<K, V>]; data : Data__80296667<K, V>};
+type Leaf__712614010<K, V> = {data : Data__80296667<K, V>};
+type Lesson__23136029 =
+  {
+    date : Text;
+    duration : Text;
+    instrument : Text;
+    lessonId : Text;
+    notes : Text;
+    status : Text;
+    studentUsername : Text;
+    studioUsername : Text;
+    teacherUsername : Text
+  };
+type Map__222667396<K, V> = Map__912772452<K, V>;
+type Map__709709801<K, V> =
+  {var root : Node__1000929467<K, V>; var size : Nat__1040412405};
+type Map__912772452<K, V> = Map__709709801<K, V>;
+type MasterInstrument__412407984 = {name : Text; sortOrder : Nat};
+type Nat__1040412405 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__1000929467<K, V> =
+  {#internal : Internal__41346355<K, V>; #leaf : Leaf__712614010<K, V>};
+type OldStudentDetail__87752062 = {notes : Text};
+type ParentStudent__242031304 =
+  {parentUserName : Text; studentUserName : Text};
+type Profile__85289932 =
+  {
+    address1 : Text;
+    address2 : Text;
+    city : Text;
+    comments : Text;
+    description : Text;
+    email : Text;
+    fullName : Text;
+    parentAffiliation : Text;
+    password : Text;
+    phone : Text;
+    role : Role__490071529;
+    state : Text;
+    studentAffiliations : [Text];
+    studioAffiliation : Text;
+    teacherAffiliation : Text;
+    username : Text;
+    zip : Text
+  };
+type Role__490071529 =
+  {#Admin; #Parent; #Student; #Studio; #Teacher; #Unassigned};
+type StudentAssignment__82782390 =
+  {
+    assignmentId : Text;
+    attachedExampleUrl : Text;
+    description : Text;
+    dueDate : Text;
+    priority : Text;
+    status : Text;
+    studentUsername : Text;
+    teacherFeedback : Text;
+    teacherUsername : Text;
+    title : Text
+  };
+type StudentBilling__568389789 =
+  {
+    amountPaid : Float;
+    billingId : Text;
+    billingMonth : Text;
+    notes : Text;
+    paymentDate : Text;
+    status : Text;
+    studentUsername : Text;
+    teacherUsername : Text;
+    tuitionAmount : Float
+  };
+type StudentCollaboration__939661328 =
+  {
+    collaborationId : Text;
+    groupName : Text;
+    groupType : Text;
+    members : Text;
+    rehearsalDates : Text;
+    sharedRepertoire : Text;
+    studentUsername : Text;
+    teacherUsername : Text
+  };
+type StudentDetail__740493675 = {notes : Text};
+type StudentEnrollment__485253439 =
+  {
+    enrollmentId : Text;
+    ensembleParticipation : Text;
+    instrument : Text;
+    notes : Text;
+    practiceGoals : Text;
+    skillLevel : Text;
+    studentUserName : Text;
+    studioName : Text;
+    teacherUserName : Text;
+    theoryLevel : Text;
+    voiceType : Text
+  };
+type StudentLesson__471361645 =
+  {
+    duration : Nat;
+    homeworkAssigned : Text;
+    lessonDate : Text;
+    lessonEntryId : Text;
+    studentUsername : Text;
+    teacherNotes : Text;
+    teacherUsername : Text;
+    topics : Text
+  };
+type StudentMessage__125468584 =
+  {
+    body : Text;
+    fromUsername : Text;
+    isPinned : Bool;
+    isRead : Bool;
+    messageId : Text;
+    studentUsername : Text;
+    subject : Text;
+    teacherUsername : Text;
+    timestamp : Text;
+    toUsername : Text
+  };
+type StudentPractice__846180707 =
+  {
+    duration : Nat;
+    pieceWorkedOn : Text;
+    practiceDate : Text;
+    practiceId : Text;
+    rating : Nat;
+    studentNotes : Text;
+    studentUsername : Text;
+    teacherFeedback : Text;
+    teacherUsername : Text
+  };
+type StudentProgress__483606708 =
+  {
+    date : Text;
+    goalMet : Bool;
+    goalSet : Text;
+    notes : Text;
+    progressId : Text;
+    score : Nat;
+    skillCategory : Text;
+    studentUsername : Text;
+    teacherUsername : Text
+  };
+type StudentRepertoire__305276625 =
+  {
+    composer : Text;
+    genre : Text;
+    notes : Text;
+    performanceDate : Text;
+    repertoireId : Text;
+    startDate : Text;
+    status : Text;
+    studentUsername : Text;
+    teacherUsername : Text;
+    title : Text
+  };
+type StudioDetail__423971814 =
+  {description : Text; licenseNumber : Text; notes : Text; website : Text};
+type TeacherDetail__986283956 =
+  {
+    bio : Text;
+    certifications : Text;
+    instruments : Text;
+    notes : Text;
+    yearsExperience : Text
+  };
+type TeacherExamplePerformance__464938478 =
+  {
+    attachedToAssignmentId : Text;
+    commentary : Text;
+    description : Text;
+    mediaUrl : Text;
+    notes : Text;
+    performanceId : Text;
+    teacherUsername : Text;
+    title : Text
+  };
+type TeacherRecital__677187212 =
+  {
+    date : Text;
+    notes : Text;
+    recitalId : Text;
+    recitalName : Text;
+    studentAssignments : Text;
+    teacherUsername : Text;
+    venue : Text
+  };
+type TeacherSchedule__780191731 =
+  {
+    dayOfWeek : Text;
+    duration : Nat;
+    endTime : Text;
+    lessonDate : Text;
+    notes : Text;
+    scheduleId : Text;
+    startTime : Text;
+    status : Text;
+    studentUsername : Text;
+    teacherUsername : Text
+  };
+type TeacherStudent__211436709 =
+  {studentUserName : Text; teacherUserName : Text};
+type TeacherStudioAffiliation__147974786 =
+  {studioName : Text; studioUserName : Text; teacherUserName : Text};
+actor ({
+  in factAssignmentStatuses :
+    Map__222667396<Text, FactAssignmentStatus__509279533>;
+  in factBillingStatuses : Map__222667396<Text, FactBillingStatus__388053895>;
+  in factCertifications : Map__222667396<Text, FactCertification__765712365>;
+  in factEnsembleTypes : Map__222667396<Text, FactEnsembleType__873551439>;
+  in factGenres : Map__222667396<Text, FactGenre__866651495>;
+  in factGroupTypes : Map__222667396<Text, FactGroupType__224589511>;
+  in factPriorities : Map__222667396<Text, FactPriority__145861265>;
+  in factRepertoireStatuses :
+    Map__222667396<Text, FactRepertoireStatus__353268030>;
+  in factRoles : Map__222667396<Text, FactRole__766902976>;
+  in factSkillCategories : Map__222667396<Text, FactSkillCategory__372111132>;
+  in factSkillLevels : Map__222667396<Text, FactSkillLevel__961613954>;
+  in factStates : Map__222667396<Text, FactState__735628440>;
+  in factTheoryLevels : Map__222667396<Text, FactTheoryLevel__164972576>;
+  in factVoiceTypes : Map__222667396<Text, FactVoiceType__780563565>;
+  in lessons : Map__222667396<Text, Lesson__23136029>;
+  in masterInstruments : Map__222667396<Text, MasterInstrument__412407984>;
+  in onboardingState : {var nextEnrollmentId : Nat};
+  in parentStudents : Map__222667396<Text, ParentStudent__242031304>;
+  in profiles : Map__222667396<Text, Profile__85289932>;
+  in studentAssignments : Map__222667396<Text, StudentAssignment__82782390>;
+  in studentBilling : Map__222667396<Text, StudentBilling__568389789>;
+  in studentCollaboration :
+    Map__222667396<Text, StudentCollaboration__939661328>;
+  in studentDetails : Map__222667396<Text, OldStudentDetail__87752062>;
+  in studentEnrollments : Map__222667396<Text, StudentEnrollment__485253439>;
+  in studentLessons : Map__222667396<Text, StudentLesson__471361645>;
+  in studentMessages : Map__222667396<Text, StudentMessage__125468584>;
+  in studentPractices : Map__222667396<Text, StudentPractice__846180707>;
+  in studentProgress : Map__222667396<Text, StudentProgress__483606708>;
+  in studentRepertoire : Map__222667396<Text, StudentRepertoire__305276625>;
+  in studioDetails : Map__222667396<Text, StudioDetail__423971814>;
+  in teacherDetails : Map__222667396<Text, TeacherDetail__986283956>;
+  in teacherExamplePerformances :
+    Map__222667396<Text, TeacherExamplePerformance__464938478>;
+  in teacherRecitals : Map__222667396<Text, TeacherRecital__677187212>;
+  in teacherSchedule : Map__222667396<Text, TeacherSchedule__780191731>;
+  in teacherStudents : Map__222667396<Text, TeacherStudent__211436709>;
+  in teacherStudioAffiliations :
+    Map__222667396<Text, TeacherStudioAffiliation__147974786>
+}, {
+  stable factAssignmentStatuses :
+    {
+      var root : Node__1000929467<Text, FactAssignmentStatus__509279533>;
+      var size : Nat__1040412405
+    };
+  stable factBillingStatuses :
+    {
+      var root : Node__1000929467<Text, FactBillingStatus__388053895>;
+      var size : Nat__1040412405
+    };
+  stable factCertifications :
+    {
+      var root : Node__1000929467<Text, FactCertification__765712365>;
+      var size : Nat__1040412405
+    };
+  stable factEnsembleTypes :
+    {
+      var root : Node__1000929467<Text, FactEnsembleType__873551439>;
+      var size : Nat__1040412405
+    };
+  stable factGenres :
+    {
+      var root : Node__1000929467<Text, FactGenre__866651495>;
+      var size : Nat__1040412405
+    };
+  stable factGroupTypes :
+    {
+      var root : Node__1000929467<Text, FactGroupType__224589511>;
+      var size : Nat__1040412405
+    };
+  stable factPriorities :
+    {
+      var root : Node__1000929467<Text, FactPriority__145861265>;
+      var size : Nat__1040412405
+    };
+  stable factRepertoireStatuses :
+    {
+      var root : Node__1000929467<Text, FactRepertoireStatus__353268030>;
+      var size : Nat__1040412405
+    };
+  stable factRoles :
+    {
+      var root : Node__1000929467<Text, FactRole__766902976>;
+      var size : Nat__1040412405
+    };
+  stable factSkillCategories :
+    {
+      var root : Node__1000929467<Text, FactSkillCategory__372111132>;
+      var size : Nat__1040412405
+    };
+  stable factSkillLevels :
+    {
+      var root : Node__1000929467<Text, FactSkillLevel__961613954>;
+      var size : Nat__1040412405
+    };
+  stable factStates :
+    {
+      var root : Node__1000929467<Text, FactState__735628440>;
+      var size : Nat__1040412405
+    };
+  stable factTheoryLevels :
+    {
+      var root : Node__1000929467<Text, FactTheoryLevel__164972576>;
+      var size : Nat__1040412405
+    };
+  stable factVoiceTypes :
+    {
+      var root : Node__1000929467<Text, FactVoiceType__780563565>;
+      var size : Nat__1040412405
+    };
+  stable lessons :
+    {
+      var root : Node__1000929467<Text, Lesson__23136029>;
+      var size : Nat__1040412405
+    };
+  stable masterInstruments :
+    {
+      var root : Node__1000929467<Text, MasterInstrument__412407984>;
+      var size : Nat__1040412405
+    };
+  stable onboardingState : {var nextEnrollmentId : Nat};
+  stable parentStudents :
+    {
+      var root : Node__1000929467<Text, ParentStudent__242031304>;
+      var size : Nat__1040412405
+    };
+  stable profiles :
+    {
+      var root : Node__1000929467<Text, Profile__85289932>;
+      var size : Nat__1040412405
+    };
+  stable studentAssignments :
+    {
+      var root : Node__1000929467<Text, StudentAssignment__82782390>;
+      var size : Nat__1040412405
+    };
+  stable studentBilling :
+    {
+      var root : Node__1000929467<Text, StudentBilling__568389789>;
+      var size : Nat__1040412405
+    };
+  stable studentCollaboration :
+    {
+      var root : Node__1000929467<Text, StudentCollaboration__939661328>;
+      var size : Nat__1040412405
+    };
+  stable studentDetails :
+    {
+      var root : Node__1000929467<Text, StudentDetail__740493675>;
+      var size : Nat__1040412405
+    };
+  stable studentEnrollments :
+    {
+      var root : Node__1000929467<Text, StudentEnrollment__485253439>;
+      var size : Nat__1040412405
+    };
+  stable studentLessons :
+    {
+      var root : Node__1000929467<Text, StudentLesson__471361645>;
+      var size : Nat__1040412405
+    };
+  stable studentMessages :
+    {
+      var root : Node__1000929467<Text, StudentMessage__125468584>;
+      var size : Nat__1040412405
+    };
+  stable studentPractices :
+    {
+      var root : Node__1000929467<Text, StudentPractice__846180707>;
+      var size : Nat__1040412405
+    };
+  stable studentProgress :
+    {
+      var root : Node__1000929467<Text, StudentProgress__483606708>;
+      var size : Nat__1040412405
+    };
+  stable studentRepertoire :
+    {
+      var root : Node__1000929467<Text, StudentRepertoire__305276625>;
+      var size : Nat__1040412405
+    };
+  stable studioDetails :
+    {
+      var root : Node__1000929467<Text, StudioDetail__423971814>;
+      var size : Nat__1040412405
+    };
+  stable teacherDetails :
+    {
+      var root : Node__1000929467<Text, TeacherDetail__986283956>;
+      var size : Nat__1040412405
+    };
+  stable teacherExamplePerformances :
+    {
+      var root : Node__1000929467<Text, TeacherExamplePerformance__464938478>;
+      var size : Nat__1040412405
+    };
+  stable teacherRecitals :
+    {
+      var root : Node__1000929467<Text, TeacherRecital__677187212>;
+      var size : Nat__1040412405
+    };
+  stable teacherSchedule :
+    {
+      var root : Node__1000929467<Text, TeacherSchedule__780191731>;
+      var size : Nat__1040412405
+    };
+  stable teacherStudents :
+    {
+      var root : Node__1000929467<Text, TeacherStudent__211436709>;
+      var size : Nat__1040412405
+    };
+  stable teacherStudioAffiliations :
+    {
+      var root : Node__1000929467<Text, TeacherStudioAffiliation__147974786>;
+      var size : Nat__1040412405
+    }
+});
